@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GlobusT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd4186518d594319039c86ffa0bdeaf289d77e44")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a3dd07fa629aafbb35e340d90d10fcb008082c82")]
 [assembly: System.Reflection.AssemblyProductAttribute("GlobusT")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GlobusT")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
