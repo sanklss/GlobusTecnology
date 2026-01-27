@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="GlobusT.ServiceCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GlobusT"
+             xmlns:converter="clr-namespace:GlobusT.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="500">
+    <UserControl.Resources>
+        <converter:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Border BorderBrush="White" Background="{Binding BackGroundColor}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Image Source="{Binding ImageFullPath}"/>
+                <Label Content="Дата начала проекта"/>
+                <Label Content="{Binding Date}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Label Content="Название"/>
+                <Label Content="{Binding Name}" FontWeight="{Binding TitleFontWeight}"/>
+                <Label Content="Область разработки"/>
+                <Label Content="{Binding IdDevelopmentAreaNavigation.Name}"/>
+                <Label Content="Длительность выполнения в днях"/>
+                <Label Content="{Binding Duration}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label Content="Базовая стоимость"/>
+                <Label Content="{Binding Price}"/>
+                <Label Content="количество доступных слотов для заявок"/>
+                <Label Content="{Binding FreeSlot}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

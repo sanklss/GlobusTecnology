@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using GlobusT.Models;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,32 @@ namespace GlobusT
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private Role _role;
+        public MainWindow(Role role)
         {
             InitializeComponent();
+            _role = role;
+            MainFrame.Navigated += MainFrame_Navigated;
+            MainFrame.Navigate(new ServicePage(role));
+        }
+
+        private void MainFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            if (e.Content is Page page)
+            {
+                if (_role == null)
+                {
+                    this.Title = $"Глобус Т. - Гость - {page.Title}";
+                }
+                else
+                {
+                    this.Title = $"Глобус Т. - {page.Title}"; ;
+                }
+            }
+            else
+            {
+                this.Title = "Глобус Т.";
+            }
         }
     }
 }
