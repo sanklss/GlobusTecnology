@@ -56,7 +56,7 @@ namespace GlobusT
             switch (_role.Id)
             {
                 case 1:
-                    RequestButton.Visibility = Visibility.Collapsed;
+                    RequestButton.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     RequestButton.Visibility = Visibility.Visible;

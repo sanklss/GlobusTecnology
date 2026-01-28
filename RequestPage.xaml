@@ -6,15 +6,22 @@
       xmlns:local="clr-namespace:GlobusT"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="RequestPage">
+      Title="RequestPage"
+      Loaded="Page_Loaded">
+    
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button x:Name="BackButton" Content="Назад" Height="25" Width="80" HorizontalAlignment="Left" Click="BackButton_Click"/>
+            <TextBlock Text="Поиск:" VerticalAlignment="Center"/>
+            <TextBox x:Name="SearchTextBox" Width="200" TextChanged="SearchTextBox_TextChanged" Padding="3" ToolTip="ФИО клиента или № заявки"/>
+            <ComboBox x:Name="StatusFilterComboBox" Width="150" DisplayMemberPath="Name" SelectionChanged="StatusFilterComboBox_SelectionChanged"/>
+            <TextBlock Text=" Сортировка:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+            <Button x:Name="SortButton" Content="По дате " Padding="10,5" Click="SortButton_Click"/>
         </StackPanel>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
