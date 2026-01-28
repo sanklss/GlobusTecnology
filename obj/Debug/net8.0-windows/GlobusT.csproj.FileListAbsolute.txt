@@ -156,3 +156,5 @@ C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-win
 C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-windows\RequestPage.g.cs
 C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-windows\RequestCard.baml
 C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-windows\RequestPage.baml
+C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-windows\RequestWindow.g.cs
+C:\Users\Григорий\source\repos\Back\GlobusT\GlobusT\obj\Debug\net8.0-windows\RequestWindow.baml

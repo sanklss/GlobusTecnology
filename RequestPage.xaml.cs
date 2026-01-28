@@ -1,8 +1,6 @@
 ﻿using GlobusT.Data;
 using GlobusT.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,35 +9,41 @@ namespace GlobusT
     public partial class RequestPage : Page
     {
         private bool _isAscendingSort = false;
+        private Role _currentRole;
 
-        public RequestPage()
+        public RequestPage(Role role)
         {
             InitializeComponent();
+            _currentRole = role;
+
+            RequestItemControl.Tag = _currentRole;
+
+            if (_currentRole == null || _currentRole.Id != 2)
+            {
+                CreateRequestButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadData();
-        }
-
-        private void LoadData()
-        {
-            try
-            {
-                LoadStatuses();
-                LoadRequests(); 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка загрузки данных: {ex.Message}", "Ошибка");
-            }
+            LoadRequests();
+            LoadStatuses();
         }
 
         private void LoadRequests()
         {
             try
             {
-                ApplyFilters();
+                using (var context = new GlobusTechnologyContext())
+                {
+                    var requests = context.Requests
+                        .Include(r => r.IdServiceNavigation)
+                        .Include(r => r.IdStatusRequestNavigation)
+                        .Include(r => r.IdUserNavigation)
+                        .ToList();
+
+                    RequestItemControl.ItemsSource = requests;
+                }
             }
             catch (Exception ex)
             {
@@ -88,7 +92,7 @@ namespace GlobusT
             ApplyFilters();
         }
 
-        private void ApplyFilters()
+        public void ApplyFilters()
         {
             try
             {
@@ -125,6 +129,31 @@ namespace GlobusT
             catch (Exception ex)
             {
                 MessageBox.Show($"Ошибка фильтрации: {ex.Message}", "Ошибка");
+            }
+        }
+
+        private void CreateRequestButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_currentRole == null || _currentRole.Id != 2)
+            {
+                MessageBox.Show("Только менеджеры могут создавать заявки!",
+                    "Доступ запрещен", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                var newRequest = new Request();
+                var requestWindow = new RequestWindow(newRequest);
+
+                if (requestWindow.ShowDialog() == true)
+                {
+                    ApplyFilters();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка создания заявки: {ex.Message}", "Ошибка");
             }
         }
     }

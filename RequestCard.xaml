@@ -24,7 +24,7 @@
                 <Label Content="ФИО Клиента"/>
                 <Label Content = "{Binding IdUserNavigation.FullName}"/>
             </StackPanel>
-            
+
             <StackPanel Grid.Column="1">
                 <Label Content = "Название заявки"/>
                 <Label Content = "{Binding IdServiceNavigation.Name}"/>
@@ -36,6 +36,7 @@
                 <Label Content="Статус"/>
                 <Label Content = "{Binding IdStatusRequestNavigation.Name}"/>
             </StackPanel>
+            <Button Grid.Column="2" Content="Редакт." x:Name="EditButton" Click="EditButton_Click" Width="90" Height="30" Margin="60,104,10,10" ToolTip="Редактировать" BorderThickness="0"/>
         </Grid>
     </Border>
 </UserControl>
