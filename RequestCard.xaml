@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="GlobusT.RequestCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GlobusT"
+             xmlns:converter="clr-namespace:GlobusT.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="500">
+    <UserControl.Resources>
+        <converter:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Border BorderBrush="Black" Background="White" BorderThickness="3" Margin="10 5 5 5">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="*"/>
+                <ColumnDefinition Width ="*"/>
+                <ColumnDefinition Width ="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label Content = "Номер заявки"/>
+                <Label Content = "{Binding Id}"/>
+                <Label Content="ФИО Клиента"/>
+                <Label Content = "{Binding IdUserNavigation.FullName}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1">
+                <Label Content = "Название заявки"/>
+                <Label Content = "{Binding IdServiceNavigation.Name}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="2">
+                <Label Content = "Дата подачи"/>
+                <Label Content = "{Binding Date}"/>
+                <Label Content="Статус"/>
+                <Label Content = "{Binding IdStatusRequestNavigation.Name}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <converter:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
     </UserControl.Resources>
-    <Border BorderBrush="White" Background="{Binding BackGroundColor}">
+    <Border BorderBrush="Black" Background="{Binding BackGroundColor}" Margin="10 5 5 5" BorderThickness="3">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

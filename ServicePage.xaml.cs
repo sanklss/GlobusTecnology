@@ -1,6 +1,7 @@
 ﻿using GlobusT.Data;
 using GlobusT.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,8 @@ namespace GlobusT
         {
             InitializeComponent();
             LoadData();
+            _role = role;
+            AdjustInterface();
         }
 
         private void LoadData()
@@ -38,8 +41,35 @@ namespace GlobusT
                     .Include(r => r.IdTypeCommandNavigation)
                     .Include(r => r.IdDevelopmentAreaNavigation)
                     .ToList();
-                    
+
             }
+        }
+
+        private void AdjustInterface()
+        {
+            if (_role == null)
+            {
+                RequestButton.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            switch (_role.Id)
+            {
+                case 1:
+                    RequestButton.Visibility = Visibility.Collapsed;
+                    break;
+                case 2:
+                    RequestButton.Visibility = Visibility.Visible;
+                    break;
+                case 3:
+                    RequestButton.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }
+
+        private void RequestPage_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RequestPage());
         }
     }
 }

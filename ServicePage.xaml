@@ -9,7 +9,14 @@
       Title="ServicePage">
 
     <Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Button x:Name="RequestButton" Content="Заявки" Click="RequestPage_Click" Width="150" Height="25" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1">
             <ItemsControl x:Name="ServicesItemControl">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
